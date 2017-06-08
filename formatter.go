@@ -253,15 +253,15 @@ func (f *TextFormatter) printColored(b *bytes.Buffer, entry *logrus.Entry, keys 
 	fmt.Println(levelText)
 	
 	switch levelText {
-		case "info":
+		case "INFO":
 			if f.EntryString.InfoLevelString != "" {
 				level = fmt.Sprintf("%s ", f.EntryString.InfoLevelString)
 			}
-		case "INFO":
+		case "WARN":
 			if f.EntryString.WarnLevelString != "" {
 				level = fmt.Sprintf("%s ", f.EntryString.WarnLevelString)
 			}
-		case "Info":
+		case "ERROR":
 			if f.EntryString.ErrorLevelString != "" {
 				level = fmt.Sprintf("%s ", f.EntryString.ErrorLevelString)
 			}
@@ -273,7 +273,7 @@ func (f *TextFormatter) printColored(b *bytes.Buffer, entry *logrus.Entry, keys 
 			if f.EntryString.PanicLevelString != "" {
 				level = fmt.Sprintf("%s ", f.EntryString.PanicLevelString)
 			}
-		case "Debug":
+		case "DEBUG":
 			if f.EntryString.DebugLevelString != "" {
 				level = fmt.Sprintf("%s ", f.EntryString.DebugLevelString)
 			}
