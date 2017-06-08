@@ -201,6 +201,14 @@ func (f *TextFormatter) Format(entry *logrus.Entry) ([]byte, error) {
 			colorScheme = noColorsColorScheme
 		}
 		f.printColored(b, entry, keys, timestampFormat, colorScheme)
+		f.printColored(b, f.EntryString.InfoLevelString, keys, timestampFormat, colorScheme)
+		
+			fmt.Println(entry.Level.String())
+			//~ case "info":
+				//~ if f.EntryString.InfoLevelString != "" {
+					f.appendKeyValue(b, "level", f.EntryString.InfoLevelString, true)
+					f.appendKeyValue(b, "level", entry.Level.String(), true)
+		
 	} else {
 		if !f.DisableTimestamp {
 			f.appendKeyValue(b, "time", entry.Time.Format(timestampFormat), true)
@@ -212,7 +220,7 @@ func (f *TextFormatter) Format(entry *logrus.Entry) ([]byte, error) {
 				//~ if f.EntryString.InfoLevelString != "" {
 					f.appendKeyValue(b, "level", f.EntryString.InfoLevelString, true)
 				//~ } else {
-					//~ f.appendKeyValue(b, "level", entry.Level.String(), true)
+					f.appendKeyValue(b, "level", entry.Level.String(), true)
 				//~ }
 			//~ case "WARN":
 				//~ if f.EntryString.WarnLevelString != "" {
