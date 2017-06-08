@@ -201,7 +201,7 @@ func (f *TextFormatter) Format(entry *logrus.Entry) ([]byte, error) {
 			colorScheme = noColorsColorScheme
 		}
 		f.printColored(b, entry, keys, timestampFormat, colorScheme)
-		f.printColored(b, f.EntryString.InfoLevelString, keys, timestampFormat, colorScheme)
+		//~ f.printColored(b, f.EntryString.InfoLevelString, keys, timestampFormat, colorScheme)
 		
 			fmt.Println(entry.Level.String())
 			//~ case "info":
@@ -286,6 +286,8 @@ func (f *TextFormatter) printColored(b *bytes.Buffer, entry *logrus.Entry, keys 
 
 	if entry.Level != logrus.WarnLevel {
 		levelText = entry.Level.String()
+	} else if f.EntryString.WarnLevelString != ""{
+		levelText = f.EntryString.WarnLevelString
 	} else {
 		levelText = "warn"
 	}
