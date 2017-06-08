@@ -241,8 +241,6 @@ func (f *TextFormatter) printColored(b *bytes.Buffer, entry *logrus.Entry, keys 
 
 	if entry.Level != logrus.WarnLevel {
 		levelText = entry.Level.String()
-	} else if f.EntryString.WarnLevelString != ""{
-		levelText = f.EntryString.WarnLevelString
 	} else {
 		levelText = "warn"
 	}
@@ -252,7 +250,37 @@ func (f *TextFormatter) printColored(b *bytes.Buffer, entry *logrus.Entry, keys 
 	}
 
 	level := levelColor(fmt.Sprintf("%5s", levelText))
+	
+	switch levelText {
+		case "info":
+			if f.EntryString.InfoLevelString != "" {
+				level = fmt.Sprintf("%s ", f.EntryString.InfoLevelString)
+			}
+		case "WARN":
+			if f.EntryString.WarnLevelString != "" {
+				level = fmt.Sprintf("%s ", f.EntryString.WarnLevelString)
+			}
+		case "ERROR":
+			if f.EntryString.ErrorLevelString != "" {
+				level = fmt.Sprintf("%s ", f.EntryString.ErrorLevelString)
+			}
+		case "FATAL":
+			if f.EntryString.FatalLevelString != "" {
+				level = fmt.Sprintf("%s ", f.EntryString.FatalLevelString)
+			}
+		case "PANIC":
+			if f.EntryString.PanicLevelString != "" {
+				level = fmt.Sprintf("%s ", f.EntryString.PanicLevelString)
+			}
+		case "Debug":
+			if f.EntryString.DebugLevelString != "" {
+				level = fmt.Sprintf("%s ", f.EntryString.DebugLevelString)
+			}
+	}
+	
 	level = fmt.Sprintf("%s ", f.EntryString.WarnLevelString)
+	
+	
 	prefix := ""
 	message := entry.Message
 
