@@ -250,17 +250,18 @@ func (f *TextFormatter) printColored(b *bytes.Buffer, entry *logrus.Entry, keys 
 	}
 
 	level := levelColor(fmt.Sprintf("%5s", levelText))
+	fmt.Println(levelText)
 	
 	switch levelText {
 		case "info":
 			if f.EntryString.InfoLevelString != "" {
 				level = fmt.Sprintf("%s ", f.EntryString.InfoLevelString)
 			}
-		case "WARN":
+		case "INFO":
 			if f.EntryString.WarnLevelString != "" {
 				level = fmt.Sprintf("%s ", f.EntryString.WarnLevelString)
 			}
-		case "ERROR":
+		case "Info":
 			if f.EntryString.ErrorLevelString != "" {
 				level = fmt.Sprintf("%s ", f.EntryString.ErrorLevelString)
 			}
