@@ -53,6 +53,15 @@ type ColorScheme struct {
 	TimestampStyle  string
 }
 
+type LevelString struct {
+	InfoLevelString  string
+	WarnLevelString  string
+	ErrorLevelString string
+	FatalLevelString string
+	PanicLevelString string
+	DebugLevelString string
+}
+
 type compiledColorScheme struct {
 	InfoLevelColor  func(string) string
 	WarnLevelColor  func(string) string
@@ -107,6 +116,9 @@ type TextFormatter struct {
 
 	// Color scheme to use.
 	colorScheme *compiledColorScheme
+
+	// Strings to use in place of entry.Level.String()
+	EntryString LevelString
 
 	// Whether the logger's out is to a terminal.
 	isTerminal bool
@@ -193,7 +205,57 @@ func (f *TextFormatter) Format(entry *logrus.Entry) ([]byte, error) {
 		if !f.DisableTimestamp {
 			f.appendKeyValue(b, "time", entry.Time.Format(timestampFormat), true)
 		}
-		f.appendKeyValue(b, "level", entry.Level.String(), true)
+
+
+
+type LevelString struct {
+	InfoLevelString  string
+	WarnLevelString  string
+	ErrorLevelString string
+	FatalLevelString string
+	PanicLevelString string
+	DebugLevelString string
+}
+
+		switch entry.Level.String() {
+			case "INFO":
+				if f.EntryString.InfoLevelString != "" {
+					f.appendKeyValue(b, "level", f.EntryString.InfoLevelString, true)
+				} else {
+					f.appendKeyValue(b, "level", entry.Level.String(), true)
+				}
+			case "WARN":
+				if f.EntryString.WarnLevelString != "" {
+					f.appendKeyValue(b, "level", f.EntryString.WarnLevelString, true)
+				} else {
+					f.appendKeyValue(b, "level", entry.Level.String(), true)
+				}
+			case "ERROR":
+				if f.EntryString.ErrorLevelString != "" {
+					f.appendKeyValue(b, "level", f.EntryString.ErrorLevelString, true)
+				} else {
+					f.appendKeyValue(b, "level", entry.Level.String(), true)
+				}
+			case "FATAL":
+				if f.EntryString.FatalLevelString != "" {
+					f.appendKeyValue(b, "level", f.EntryString.FatalLevelString, true)
+				} else {
+					f.appendKeyValue(b, "level", entry.Level.String(), true)
+				}
+			case "PANIC":
+				if f.EntryString.PanicLevelString != "" {
+					f.appendKeyValue(b, "level", f.EntryString.PanicLevelString, true)
+				} else {
+					f.appendKeyValue(b, "level", entry.Level.String(), true)
+				}
+			case "Debug":
+				if f.EntryString.DebugLevelString != "" {
+					f.appendKeyValue(b, "level", f.EntryString.DebugLevelString, true)
+				} else {
+					f.appendKeyValue(b, "level", entry.Level.String(), true)
+				}
+		}
+				
 		for _, key := range keys {
 			f.appendKeyValue(b, key, entry.Data[key], true)
 		}
