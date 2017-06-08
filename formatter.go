@@ -206,17 +206,6 @@ func (f *TextFormatter) Format(entry *logrus.Entry) ([]byte, error) {
 			f.appendKeyValue(b, "time", entry.Time.Format(timestampFormat), true)
 		}
 
-
-
-type LevelString struct {
-	InfoLevelString  string
-	WarnLevelString  string
-	ErrorLevelString string
-	FatalLevelString string
-	PanicLevelString string
-	DebugLevelString string
-}
-
 		switch entry.Level.String() {
 			case "INFO":
 				if f.EntryString.InfoLevelString != "" {
