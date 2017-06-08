@@ -278,9 +278,6 @@ func (f *TextFormatter) printColored(b *bytes.Buffer, entry *logrus.Entry, keys 
 			}
 	}
 	
-	level = fmt.Sprintf("%s ", f.EntryString.WarnLevelString)
-	
-	
 	prefix := ""
 	message := entry.Message
 
