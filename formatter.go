@@ -207,7 +207,7 @@ func (f *TextFormatter) Format(entry *logrus.Entry) ([]byte, error) {
 		}
 
 		switch entry.Level.String() {
-			case "INFO":
+			case "info":
 				if f.EntryString.InfoLevelString != "" {
 					f.appendKeyValue(b, "level", f.EntryString.InfoLevelString, true)
 				} else {
