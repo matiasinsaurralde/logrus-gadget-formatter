@@ -201,58 +201,13 @@ func (f *TextFormatter) Format(entry *logrus.Entry) ([]byte, error) {
 			colorScheme = noColorsColorScheme
 		}
 		f.printColored(b, entry, keys, timestampFormat, colorScheme)
-		//~ f.printColored(b, f.EntryString.InfoLevelString, keys, timestampFormat, colorScheme)
-		
-			fmt.Println(entry.Level.String())
-			//~ case "info":
-				//~ if f.EntryString.InfoLevelString != "" {
-					f.appendKeyValue(b, "level", f.EntryString.InfoLevelString, true)
-					f.appendKeyValue(b, "level", entry.Level.String(), true)
 		
 	} else {
 		if !f.DisableTimestamp {
 			f.appendKeyValue(b, "time", entry.Time.Format(timestampFormat), true)
 		}
 
-		//~ switch entry.Level.String() {
-			fmt.Println(entry.Level.String())
-			//~ case "info":
-				//~ if f.EntryString.InfoLevelString != "" {
-					f.appendKeyValue(b, "level", f.EntryString.InfoLevelString, true)
-				//~ } else {
-					f.appendKeyValue(b, "level", entry.Level.String(), true)
-				//~ }
-			//~ case "WARN":
-				//~ if f.EntryString.WarnLevelString != "" {
-					//~ f.appendKeyValue(b, "level", f.EntryString.WarnLevelString, true)
-				//~ } else {
-					//~ f.appendKeyValue(b, "level", entry.Level.String(), true)
-				//~ }
-			//~ case "ERROR":
-				//~ if f.EntryString.ErrorLevelString != "" {
-					//~ f.appendKeyValue(b, "level", f.EntryString.ErrorLevelString, true)
-				//~ } else {
-					//~ f.appendKeyValue(b, "level", entry.Level.String(), true)
-				//~ }
-			//~ case "FATAL":
-				//~ if f.EntryString.FatalLevelString != "" {
-					//~ f.appendKeyValue(b, "level", f.EntryString.FatalLevelString, true)
-				//~ } else {
-					//~ f.appendKeyValue(b, "level", entry.Level.String(), true)
-				//~ }
-			//~ case "PANIC":
-				//~ if f.EntryString.PanicLevelString != "" {
-					//~ f.appendKeyValue(b, "level", f.EntryString.PanicLevelString, true)
-				//~ } else {
-					//~ f.appendKeyValue(b, "level", entry.Level.String(), true)
-				//~ }
-			//~ case "Debug":
-				//~ if f.EntryString.DebugLevelString != "" {
-					//~ f.appendKeyValue(b, "level", f.EntryString.DebugLevelString, true)
-				//~ } else {
-					//~ f.appendKeyValue(b, "level", entry.Level.String(), true)
-				//~ }
-		//~ }
+		f.appendKeyValue(b, "level", entry.Level.String(), true)
 				
 		for _, key := range keys {
 			f.appendKeyValue(b, key, entry.Data[key], true)
