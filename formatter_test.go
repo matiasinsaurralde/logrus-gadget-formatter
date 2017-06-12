@@ -1,8 +1,7 @@
 package gadgetFormatter_test
 
 import (
-	. "github.com/x-cray/logrus-prefixed-formatter"
-
+	. "github.com/nextthingco/logrus-gadget-formatter"
 	"github.com/Sirupsen/logrus"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
