@@ -1,4 +1,4 @@
-package prefixed_test
+package gadgetFormatter_test
 
 import (
 	. "github.com/x-cray/logrus-prefixed-formatter"
