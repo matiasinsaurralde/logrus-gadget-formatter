@@ -1,4 +1,4 @@
-package prefixed
+package gadgetFormatter
 
 import (
 	"bytes"
