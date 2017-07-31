@@ -2,7 +2,7 @@ package gadgetFormatter_test
 
 import (
 	. "github.com/nextthingco/logrus-gadget-formatter"
-	"github.com/sirupsen/logrus"
+	"gopkg.in/sirupsen/logrus.v1"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )

@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/sirupsen/logrus"
+	"gopkg.in/sirupsen/logrus.v1"
 	"github.com/mgutz/ansi"
 )
 

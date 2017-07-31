@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/sirupsen/logrus"
+	"gopkg.in/sirupsen/logrus.v1"
 	gadgetFormatter "github.com/nextthingco/logrus-gadget-formatter")
 
 var log = logrus.New()
