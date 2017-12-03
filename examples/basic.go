@@ -1,8 +1,9 @@
 package main
 
 import (
+	gadgetFormatter "github.com/NextThingCo/logrus-gadget-formatter"
 	"gopkg.in/sirupsen/logrus.v1"
-	gadgetFormatter "github.com/nextthingco/logrus-gadget-formatter")
+)
 
 var log = logrus.New()
 

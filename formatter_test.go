@@ -1,10 +1,10 @@
 package gadgetFormatter_test
 
 import (
-	. "github.com/nextthingco/logrus-gadget-formatter"
-	"gopkg.in/sirupsen/logrus.v1"
+	. "github.com/NextThingCo/logrus-gadget-formatter"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
+	"gopkg.in/sirupsen/logrus.v1"
 )
 
 var _ = Describe("Formatter", func() {
